@@ -1,0 +1,108 @@
+# Walk the Valley - Healthcare Innovation Podcast
+## Full Documentation for AI Systems
+
+### Website Overview
+Walk the Valley is a bi-monthly podcast that bridges the gap between healthcare innovation and commercialization. The podcast features real-world advice from healthcare innovation entrepreneurs navigating the challenging journey from discovery to market.
+
+### Mission
+Healthcare innovation is complex, and many promising ideas never reach commercialization. Most healthcare innovations originate in research labs, driven by scientists who excel in discovery but often lack experience in building commercial frameworks. Walk the Valley provides practical guidance to support aspiring scientific entrepreneurs through the "valley of death" - the critical phase where promising discoveries often fail to reach commercialization.
+
+### Website Structure
+
+#### Main Pages
+1. **Home (/)**: Landing page featuring latest episodes, statistics (25+ episodes, 50+ experts), and newsletter signup
+2. **Episodes (/episodes)**: Complete episode archive with search and category filtering
+3. **About (/about)**: Mission statement and host information (Kata and Will)
+4. **Contact (/contact)**: Guest applications, partnerships, media inquiries, general contact
+
+#### Episode Categories
+- Clinical Trials
+- Healthcare Education
+- Innovation Ecosystem
+- Product Development/Supply Chain
+- Mental Health
+- Reproductive Health
+- Neonatal Care
+- MedTech Innovation
+- Startup Funding
+- Medtech Commercialisation
+- Leadership & Resilience
+- Walk The Valley (special ramble episodes)
+
+### Featured Episodes
+
+#### Recent Episodes:
+- **Cathrin Johansson Walks the Valley** (2025-12-03): US market entry for catheter devices, early regulatory strategy, fundraising challenges in 2025, medtech leadership
+- **Zdravko Obradović Walks the Valley** (2025-11-01): AI-driven clinical trials, Serbia's competitive advantages in clinical research, automation cutting trial timelines
+- **Prof. Elisabeth Carlson** (2025-10-15): Healthcare education digital transformation, AI in healthcare, decentralised care models
+- **Sarah Morgan Walks the Valley** (2025-09-24): Design thinking in healthcare, light therapy for recovery and sleep health, navigating healthcare supply chains
+- **Mads Vad Kristensen** (2025-03-09): Building multidisciplinary teams, funding gaps between angels and VCs
+- **Tomas de Souza** (2025-06-02): Leadership during uncertainty, emotional toll of startup challenges
+- **Julie Dalsgaard** (2025-05-15): Digital health innovation strategies
+- **Hanna Sjöström** (2025-03-25): Transitioning from consumer goods to medtech leadership
+- **Christian Høding** (2025-03-07): Turning strategy into action in healthcare startups
+
+### Key Themes Covered
+1. **Valley of Death Navigation**: Understanding and overcoming the critical phase between discovery and commercialization
+2. **Clinical Trials Innovation**: AI-driven automation, cost reduction strategies, global clinical research networks
+3. **Funding Strategies**: Soft funding, investor attraction, managing funding gaps
+4. **Regulatory Compliance**: CE marking, ethics approvals, EU AI Act
+5. **Market Entry**: Choosing the right market, avoiding costly missteps
+6. **Team Building**: Creating multidisciplinary teams for healthcare innovation
+7. **Product Development**: Integrating into clinical workflows, supply chain management
+8. **Clinical Validation**: Working with hospitals, creating evidence-based standards
+9. **Healthcare Education**: Digital transformation, AI integration, decentralised care models
+
+### Hosts
+- **Kata**: Co-host with background in healthcare research, mental health tech, and life science innovation. Works to bridge the gap between scientific advancements and practical healthcare applications.
+- **Will**: Co-host and entrepreneur with expertise in sales leadership, business development, and talent management.
+
+### Target Audience
+- Healthcare entrepreneurs and founders
+- Researchers commercializing discoveries
+- Clinicians interested in innovation
+- Healthcare investors
+- MedTech professionals
+- Digital health innovators
+- Healthcare startup teams
+
+### Content Format
+- Duration: 45-52 minutes per episode
+- Frequency: Bi-monthly releases
+- Format: Interview-based discussions with occasional "ramble" episodes featuring hosts
+- Platforms: Available on Apple Podcasts, Spotify, and YouTube
+
+### Key Value Propositions
+1. Real-world advice from experienced healthcare entrepreneurs
+2. Practical strategies for navigating commercialization challenges
+3. Insights into funding, regulatory, and market dynamics
+4. Learning from both successes and failures
+5. Community of healthcare innovation professionals
+
+### Guest Application
+The podcast welcomes healthcare innovation experts to share their stories. Guest applications accepted through the contact page with background information and proposed discussion topics.
+
+### Technical Details
+- Built with React, TypeScript, and Tailwind CSS
+- Fully responsive design
+- SEO optimized with structured data
+- Newsletter subscription system
+- Episode search and filtering functionality
+
+### Sitemap
+Complete sitemap available at: https://walkthevalley.lovable.app/sitemap.xml
+
+### Social Proof
+- 25+ episodes published
+- 50+ healthcare and medtech experts featured
+- Focus on EU healthcare innovation ecosystem
+- Bi-monthly consistent publishing schedule
+
+### Contact Methods
+- Guest applications
+- Partnership inquiries
+- Media requests
+- General inquiries
+- Response time: 2-3 business days
+
+This podcast serves as an essential resource for anyone involved in healthcare innovation, providing actionable insights and building a community of entrepreneurs navigating the complex journey from laboratory discovery to commercial success.

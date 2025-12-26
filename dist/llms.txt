@@ -1,0 +1,28 @@
+# Walk the Valley - Healthcare Innovation Podcast
+
+## About
+Walk the Valley is a bi-monthly podcast featuring healthcare innovation entrepreneurs navigating from discovery to commercialization. We provide real-world advice from 50+ medtech experts across 25+ episodes.
+
+## Main Pages
+- Home: https://walkthevalley.lovable.app/
+- Episodes: https://walkthevalley.lovable.app/episodes
+- About: https://walkthevalley.lovable.app/about
+- Contact: https://walkthevalley.lovable.app/contact
+
+## Topics Covered
+- Healthcare innovation and commercialization
+- Medtech product development
+- Mental health technology
+- Neonatal care solutions
+- Startup funding strategies
+- Clinical trials and research
+- Regulatory navigation (FDA, CE marking)
+- Market validation
+- Supply chain management
+- Clinical workflow integration
+- US market entry strategies
+
+## Contact
+For guest applications, partnerships, or inquiries, visit: https://walkthevalley.lovable.app/contact
+
+Full documentation: https://walkthevalley.lovable.app/llms.full.txt

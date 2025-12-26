@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Configuration Test - Walk The Valley</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-item {
+            margin: 15px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .success { background: #d4edda; border-color: #c3e6cb; }
+        .error { background: #f8d7da; border-color: #f5c6cb; }
+        .info { background: #d1ecf1; border-color: #bee5eb; }
+        pre {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Server Configuration Test</h1>
+        <p>This page helps diagnose why /accounts might not be working on your live site.</p>
+        
+        <div id="tests">
+            <!-- Tests will be populated by JavaScript -->
+        </div>
+        
+        <div class="test-item info">
+            <h3>Live Route Tests</h3>
+            <button onclick="testRouteAjax('/accounts')">Test /accounts (AJAX)</button>
+            <button onclick="testRouteAjax('/contact')">Test /contact (AJAX)</button>
+            <button onclick="testRouteAjax('/about')">Test /about (AJAX)</button>
+            <button onclick="testRoute('/accounts')">Test /accounts (New Tab)</button>
+            <button onclick="window.location.href='/'">Go to Home</button>
+            <div id="ajax-results" style="margin-top: 15px;"></div>
+        </div>
+        
+        <div class="test-item">
+            <h3>Server Configuration Check</h3>
+            <button onclick="checkHtaccess()">Check .htaccess Status</button>
+            <button onclick="checkServerHeaders()">Check Server Response</button>
+            <div id="server-results" style="margin-top: 15px;"></div>
+        </div>
+        
+        <div class="test-item">
+            <h3>Instructions for Hosting Providers</h3>
+            <details>
+                <summary>Apache Hosting (GreenGeeks, GoDaddy, HostGator, etc.)</summary>
+                <ol>
+                    <li>Ensure .htaccess file is in your domain's root directory (public_html or www)</li>
+                    <li>Check that mod_rewrite is enabled on your server</li>
+                    <li>Verify file permissions are set correctly (644 for .htaccess)</li>
+                    <li>Contact support if mod_rewrite is disabled</li>
+                </ol>
+            </details>
+            <details>
+                <summary>Netlify</summary>
+                <ol>
+                    <li>Ensure _redirects file is in your site's publish directory</li>
+                    <li>Check deployment logs for any redirect rule errors</li>
+                    <li>Verify build settings are correct</li>
+                </ol>
+            </details>
+            <details>
+                <summary>Vercel</summary>
+                <ol>
+                    <li>Ensure vercel.json is in your project root</li>
+                    <li>Check deployment logs</li>
+                    <li>Verify build and deployment settings</li>
+                </ol>
+            </details>
+        </div>
+    </div>
+
+    <script>
+        function runTests() {
+            const testsContainer = document.getElementById('tests');
+            const tests = [];
+            
+            // Test 1: Check current URL
+            tests.push({
+                name: 'Current Page Location',
+                status: 'info',
+                message: `Current URL: ${window.location.href}`
+            });
+            
+            // Test 2: Check if this is HTTPS
+            tests.push({
+                name: 'HTTPS Check',
+                status: window.location.protocol === 'https:' ? 'success' : 'error',
+                message: window.location.protocol === 'https:' ? 
+                    'Site is using HTTPS ✓' : 
+                    'Site is not using HTTPS - this might cause routing issues'
+            });
+            
+            // Test 3: Check browser history API support
+            tests.push({
+                name: 'History API Support',
+                status: window.history && window.history.pushState ? 'success' : 'error',
+                message: window.history && window.history.pushState ? 
+                    'Browser supports History API ✓' : 
+                    'Browser does not support History API'
+            });
+            
+            // Test 4: Check if we can detect server type
+            tests.push({
+                name: 'Server Detection',
+                status: 'info',
+                message: 'Check your hosting provider control panel for server type (Apache/Nginx)'
+            });
+            
+            // Test 5: JavaScript routing test
+            tests.push({
+                name: 'Client-side Routing Test',
+                status: 'info',
+                message: 'Use the buttons below to test different routes'
+            });
+            
+            // Render tests
+            testsContainer.innerHTML = tests.map(test => `
+                <div class="test-item ${test.status}">
+                    <h3>${test.name}</h3>
+                    <p>${test.message}</p>
+                </div>
+            `).join('');
+        }
+        
+        function testRoute(path) {
+            const fullUrl = window.location.origin + path;
+            const newWindow = window.open(fullUrl, '_blank');
+            
+            setTimeout(() => {
+                alert(`Opened ${fullUrl} in new tab. Check if it loads correctly or shows a 404 error.`);
+            }, 1000);
+        }
+        
+        function testRouteAjax(path) {
+            const resultsDiv = document.getElementById('ajax-results');
+            const fullUrl = window.location.origin + path;
+            
+            resultsDiv.innerHTML = `<p>Testing ${fullUrl}...</p>`;
+            
+            fetch(fullUrl)
+                .then(response => {
+                    const status = response.status;
+                    const statusText = response.statusText;
+                    const contentType = response.headers.get('content-type') || 'unknown';
+                    const server = response.headers.get('server') || 'unknown';
+                    const xPoweredBy = response.headers.get('x-powered-by') || 'none';
+                    
+                    return response.text().then(text => {
+                        let analysis = '';
+                        let className = '';
+                        
+                        if (status === 200) {
+                            if (text.includes('<!DOCTYPE html>') && text.includes('Walk The Valley')) {
+                                analysis = '✅ SUCCESS: Route works correctly, returns main app HTML';
+                                className = 'success';
+                            } else if (text.includes('404') || text.includes('Not Found')) {
+                                analysis = '❌ ERROR: Returns 404 content despite 200 status - .htaccess not working';
+                                className = 'error';
+                            } else {
+                                analysis = '⚠️ WARNING: Unexpected content returned';
+                                className = 'info';
+                            }
+                        } else if (status === 404) {
+                            analysis = '❌ ERROR: Route not found (404) - .htaccess rules not applied';
+                            className = 'error';
+                        } else {
+                            analysis = `⚠️ WARNING: Unexpected status ${status}`;
+                            className = 'info';
+                        }
+                        
+                        resultsDiv.innerHTML = `
+                            <div class="test-item ${className}">
+                                <h4>AJAX Test Result for ${path}</h4>
+                                <p><strong>Status:</strong> ${status} ${statusText}</p>
+                                <p><strong>Content-Type:</strong> ${contentType}</p>
+                                <p><strong>Server:</strong> ${server}</p>
+                                <p><strong>X-Powered-By:</strong> ${xPoweredBy}</p>
+                                <p><strong>Analysis:</strong> ${analysis}</p>
+                                <p><strong>Content Preview:</strong> ${text.substring(0, 200)}...</p>
+                                <details>
+                                    <summary>Full Response Headers</summary>
+                                    <pre>${Array.from(response.headers.entries()).map(([k,v]) => `${k}: ${v}`).join('\n')}</pre>
+                                </details>
+                            </div>
+                        `;
+                    });
+                })
+                .catch(error => {
+                    resultsDiv.innerHTML = `
+                        <div class="test-item error">
+                            <h4>AJAX Test Failed for ${path}</h4>
+                            <p><strong>Error:</strong> ${error.message}</p>
+                            <p>This might indicate a network issue or CORS problem.</p>
+                        </div>
+                    `;
+                });
+        }
+        
+        function checkHtaccess() {
+            const resultsDiv = document.getElementById('server-results');
+            resultsDiv.innerHTML = '<p>Checking .htaccess configuration...</p>';
+            
+            Promise.all([
+                fetch('/.htaccess').catch(e => ({ status: 'error', error: e.message })),
+                fetch('/public/.htaccess').catch(e => ({ status: 'error', error: e.message }))
+            ]).then(responses => {
+                let result = '<h4>Checking .htaccess files:</h4>';
+                
+                // Check root .htaccess
+                const rootResponse = responses[0];
+                if (rootResponse.status === 403) {
+                    result += '<div class="success">✅ ROOT .htaccess: exists and protected (403)</div>';
+                } else if (rootResponse.status === 404) {
+                    result += '<div class="error">❌ ROOT .htaccess: not found (404)</div>';
+                } else if (rootResponse.error) {
+                    result += `<div class="error">❌ ROOT .htaccess: error - ${rootResponse.error}</div>`;
+                } else {
+                    result += `<div class="info">⚠️ ROOT .htaccess: status ${rootResponse.status}</div>`;
+                }
+                
+                // Check public .htaccess
+                const publicResponse = responses[1];
+                if (publicResponse.status === 403) {
+                    result += '<div class="info">⚠️ PUBLIC .htaccess: exists (may cause conflicts)</div>';
+                } else if (publicResponse.status === 404) {
+                    result += '<div class="success">✅ PUBLIC .htaccess: not found (good, no conflicts)</div>';
+                } else if (publicResponse.error) {
+                    result += `<div class="success">✅ PUBLIC .htaccess: not accessible (good)</div>`;
+                } else {
+                    result += `<div class="info">⚠️ PUBLIC .htaccess: status ${publicResponse.status}</div>`;
+                }
+                
+                result += '<p><strong>Recommendation:</strong> Only the root .htaccess should exist for proper SPA routing.</p>';
+                
+                resultsDiv.innerHTML = result;
+            });
+        }
+        
+        function checkServerHeaders() {
+            const resultsDiv = document.getElementById('server-results');
+            
+            fetch(window.location.origin + '/server-test.html')
+                .then(response => {
+                    const serverHeader = response.headers.get('server') || 'Unknown';
+                    const xPoweredBy = response.headers.get('x-powered-by') || 'None';
+                    
+                    resultsDiv.innerHTML = `
+                        <div class="test-item info">
+                            <h4>Server Information</h4>
+                            <p><strong>Server:</strong> ${serverHeader}</p>
+                            <p><strong>X-Powered-By:</strong> ${xPoweredBy}</p>
+                            <p><strong>Analysis:</strong> ${
+                                serverHeader.toLowerCase().includes('apache') ?
+                                    'Apache server detected - .htaccess should work' :
+                                serverHeader.toLowerCase().includes('nginx') ?
+                                    'Nginx server detected - you need nginx.conf instead of .htaccess' :
+                                    'Server type unclear - check with your hosting provider'
+                            }</p>
+                        </div>
+                    `;
+                })
+                .catch(error => {
+                    resultsDiv.innerHTML = `
+                        <div class="test-item error">
+                            <h4>Server Header Check Failed</h4>
+                            <p>Error: ${error.message}</p>
+                        </div>
+                    `;
+                });
+        }
+        
+        // Run tests when page loads
+        document.addEventListener('DOMContentLoaded', runTests);
+    </script>
+</body>
+</html>
