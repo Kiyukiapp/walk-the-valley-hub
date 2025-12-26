@@ -22,11 +22,11 @@ type Prospect = {
 };
 
 interface KanbanViewProps {
-  prospects: Prospect[];
-  onProspectClick: (prospect: Prospect) => void;
+  prospects?: Prospect[];
+  onProspectClick?: (prospect: Prospect) => void;
 }
 
-const KanbanView: React.FC<KanbanViewProps> = ({ prospects, onProspectClick }) => {
+const KanbanView: React.FC<KanbanViewProps> = ({ prospects = [], onProspectClick = () => {} }) => {
   const stages = [
     { id: 'prospect', label: 'Prospect', color: 'bg-muted' },
     { id: 'contacted', label: 'Contacted', color: 'bg-yellow-100 border-yellow-200' },
