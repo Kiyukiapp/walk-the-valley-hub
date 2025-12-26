@@ -2,7 +2,8 @@ import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
-import { Users, Target, Heart, Award } from "lucide-react";
+import { Users, Target, Heart, Award, Linkedin } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import valleyBg from "@/assets/images/backgrounds/valley-background.jpg";
 import kataImage from "@/assets/images/people/01-Kata-1.png";
 import willImage from "@/assets/images/people/05-Will-1.png";
@@ -10,16 +11,19 @@ import willImage from "@/assets/images/people/05-Will-1.png";
 const About = () => {
   const hosts = [
     {
-      name: "Katalin Vikuk",
-      role: "Co-Host",
+      name: "Kata",
+      role: "Co-host & Innovation leader",
       image: kataImage,
-      bio: "Kata brings extensive experience in healthcare innovation and startup ecosystems. Her background in biomedical research and entrepreneurship provides unique insights into the challenges faced by health tech founders."
+      bio: "With a robust background in healthcare research, mental health tech, and life science innovation, I am dedicated to transforming research into real-world health solutions. My goal is to bridge the gap between cutting-edge scientific advancements and practical applications that improve everyday health care.",
+      note: "Please note: My work on \"Walk the Valley\" is a personal passion project and is independent of my professional role at Medicon Valley Alliance.",
+      linkedin: "https://www.linkedin.com/in/katalin-vikuk/"
     },
     {
-      name: "Will Naylor",
-      role: "Co-Host",
+      name: "Will",
+      role: "Co-host & entrepreneur",
       image: willImage,
-      bio: "Will combines deep expertise in medical technology commercialization with hands-on experience helping startups navigate the complex healthcare landscape from idea to market."
+      bio: "Accomplished entrepreneur and business leader with proven success in developing companies. Expertise in sales leadership, business development, and talent management. Strong track record of creating innovative strategies and coaching leaders to drive organizational success and align teams with company vision.",
+      linkedin: "https://www.linkedin.com/in/willnaylor/"
     }
   ];
 
@@ -109,20 +113,41 @@ const About = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {hosts.map((host, index) => (
-              <Card key={index} className="bg-gradient-card shadow-elegant overflow-hidden">
-                <div className="aspect-square overflow-hidden">
-                  <img
-                    src={host.image}
-                    alt={host.name}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                  />
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-foreground mb-1">{host.name}</h3>
-                  <p className="text-primary font-medium mb-4">{host.role}</p>
-                  <p className="text-muted-foreground">{host.bio}</p>
+              <Card key={index} className="bg-card border border-border shadow-lg overflow-hidden">
+                <CardContent className="p-8 flex gap-6">
+                  {/* Circular Photo */}
+                  <div className="flex-shrink-0">
+                    <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-primary/20">
+                      <img
+                        src={host.image}
+                        alt={host.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="flex flex-col">
+                    <h3 className="text-2xl font-bold text-foreground mb-1">Introducing {host.name}</h3>
+                    <p className="text-primary font-medium mb-4">{host.role}</p>
+                    <p className="text-muted-foreground mb-4 leading-relaxed">{host.bio}</p>
+                    
+                    {host.note && (
+                      <p className="text-sm text-muted-foreground italic mb-4">{host.note}</p>
+                    )}
+                    
+                    <Button 
+                      asChild
+                      className="w-fit bg-[#22c55e] hover:bg-[#16a34a] text-white mt-auto"
+                    >
+                      <a href={host.linkedin} target="_blank" rel="noopener noreferrer">
+                        <Linkedin className="mr-2 h-4 w-4" />
+                        Connect on LinkedIn
+                      </a>
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             ))}
