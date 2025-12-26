@@ -9,9 +9,37 @@ import { Calendar, Clock, ArrowLeft, Share, Download, ExternalLink, Music, Headp
 import valleyBackground from "@/assets/images/backgrounds/valley-background.jpg";
 import wtvLogoWhite from "@/assets/images/branding/wtv-logo-white.png";
 import medvascLogo from "@/assets/images/logos/medvasc.png";
+import healthtechhubLogo from "@/assets/images/logos/healthtechhub.png";
 
 // Mock episode data (in a real app, this would come from an API)
 const episodeData = {
+  "health-tech-hub-walks-the-valley": {
+    id: "health-tech-hub-walks-the-valley",
+    title: "Health Tech Hub walks the valley",
+    description: "A round-table discussion with two guests who approach healthcare innovation from distinct but connected perspectives.",
+    publishDate: "2025-12-26",
+    duration: "55:00",
+    thumbnailUrl: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=400&fit=crop&crop=center",
+    category: "Innovation Ecosystem",
+    guest: "Martin Broch Pedersen & Nicolas Bouchet",
+    companyLogo: healthtechhubLogo,
+    youtubeId: "QkvP_xdYBhw",
+    season: 2,
+    fullDescription: `In this episode of Walk the Valley, we do something a little different. A round-table discussion with two guests who approach healthcare innovation from distinct but connected perspectives.
+
+We're joined by Martin Broch Pedersen, Business Development Director at Health Tech Hub Copenhagen, who works closely with early-stage healthtech startups on regulation, reimbursement, and commercialisation through programmes like Health Tech Pathways. Martin focuses on building the support structures that help founders learn faster, adapt earlier, and survive the valley of death.
+
+We're also joined by Nicolas Bouchet, Investment Manager at Health Tech Hub Copenhagen, who brings the investor lens. Nicolas explores how startups can turn attention into actual investment, what makes a company investable, and why strong business models matter more than visibility alone.`,
+    keyTakeaways: [
+      "Why saving money long-term often means investing earlier",
+      "Why building product and market in parallel beats waiting for a 'finished' product",
+      "What builds investor credibility and why fitting into existing budget streams matters",
+      "Why knowing what you don't know is one of a founder's strongest assets",
+      "Understanding the system you're building in and working with it"
+    ],
+    appleUrl: "https://podcasts.apple.com/se/podcast/walk-the-valley/id1791839096?l=en-GB&i=1000742358187",
+    spotifyUrl: "https://open.spotify.com/episode/3VJqXRG5ePDXCgnjPB5yIK?si=TIIleSvfQ024SNcoZGqIOg"
+  },
   "cathrin-johansson-walks-the-valley": {
     id: "cathrin-johansson-walks-the-valley",
     title: "Cathrin Johansson Walks the Valley",
