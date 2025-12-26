@@ -15,6 +15,7 @@ import nanolitLogo from '@/assets/images/logos/nanolit.png';
 import malmoUniversityLogo from '@/assets/images/logos/malmo-university.png';
 import ctbLogo from '@/assets/images/logos/ctb.png';
 import medvascLogo from '@/assets/images/logos/medvasc.png';
+import healthtechhubLogo from '@/assets/images/logos/healthtechhub.png';
 import wtvLogo from '@/assets/images/branding/wtv-logo-white.png';
 import valleyBackground from '@/assets/images/backgrounds/valley-background.jpg';
 
@@ -29,9 +30,27 @@ export interface Episode {
   guest?: string;
   companyLogo?: string;
   season?: number;
+  youtubeUrl?: string;
+  spotifyUrl?: string;
+  appleUrl?: string;
 }
 
 export const allEpisodes: Episode[] = [
+  {
+    id: "health-tech-hub-walks-the-valley",
+    title: "Health Tech Hub walks the valley",
+    description: "In this episode of Walk the Valley, we do something a little different. A round-table discussion with two guests who approach healthcare innovation from distinct but connected perspectives. We're joined by Martin Broch Pedersen, Business Development Director at Health Tech Hub Copenhagen, who works closely with early-stage healthtech startups on regulation, reimbursement, and commercialisation through programmes like Health Tech Pathways.",
+    publishDate: "2025-12-26",
+    duration: "55:00",
+    thumbnailUrl: valleyBackground,
+    category: "Innovation Ecosystem",
+    guest: "Martin Broch Pedersen & Nicolas Bouchet",
+    companyLogo: healthtechhubLogo,
+    season: 2,
+    youtubeUrl: "https://youtu.be/QkvP_xdYBhw",
+    spotifyUrl: "https://open.spotify.com/episode/3VJqXRG5ePDXCgnjPB5yIK?si=TIIleSvfQ024SNcoZGqIOg",
+    appleUrl: "https://podcasts.apple.com/se/podcast/walk-the-valley/id1791839096?l=en-GB&i=1000742358187"
+  },
   {
     id: "cathrin-johansson-walks-the-valley",
     title: "Cathrin Johansson Walks the Valley",
