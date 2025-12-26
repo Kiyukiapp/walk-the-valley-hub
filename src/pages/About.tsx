@@ -16,14 +16,14 @@ const About = () => {
       image: kataImage,
       bio: "With a robust background in healthcare research, mental health tech, and life science innovation, I am dedicated to transforming research into real-world health solutions. My goal is to bridge the gap between cutting-edge scientific advancements and practical applications that improve everyday health care.",
       note: "Please note: My work on \"Walk the Valley\" is a personal passion project and is independent of my professional role at Medicon Valley Alliance.",
-      linkedin: "https://www.linkedin.com/in/katalin-vikuk/"
+      linkedin: "https://www.linkedin.com/in/katalinvikuk/"
     },
     {
       name: "Will",
       role: "Co-host & entrepreneur",
       image: willImage,
       bio: "Accomplished entrepreneur and business leader with proven success in developing companies. Expertise in sales leadership, business development, and talent management. Strong track record of creating innovative strategies and coaching leaders to drive organizational success and align teams with company vision.",
-      linkedin: "https://www.linkedin.com/in/willnaylor/"
+      linkedin: "https://www.linkedin.com/in/willgray81/"
     }
   ];
 
